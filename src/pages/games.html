@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Games | Pixel Heaven</title>
+    <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream: "#FFF6E5",
+              cocoa: "#4A3226",
+              peach: "#F4A988",
+              sage: "#A7C4A0",
+              butter: "#FFD97A",
+              berry: "#C85C73",
+            },
+            fontFamily: {
+              pixel: ['"Press Start 2P"', "monospace"],
+              body: ["Nunito", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-cream text-cocoa font-body">
+    <!-- Header Navbar start -->
+    <header class="bg-butter border-b-4 border-cocoa">
+      <div
+        class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3"
+      >
+        <a href="../../index.html" class="flex items-center gap-2">
+          <img src="../../assets/favicon.svg" alt="" class="w-9 h-9" />
+          <span class="font-pixel text-sm">Pixel Heaven</span>
+        </a>
+
+        <!-- Menu Button -->
+        <button
+          type="button"
+          id="menu-toggle"
+          aria-expanded="false"
+          aria-controls="main-nav"
+          class="md:hidden inline-block px-5 py-1 rounded-lg border-2 border-cocoa font-extrabold shadow-[3px_3px_0_#4A3226] hover:translate-y-0.5 hover:shadow-none transition text-center bg-white cursor-pointer"
+        >
+          Menu
+        </button>
+
+        <!-- Nav Links -->
+        <nav
+          id="main-nav"
+          aria-label="Main"
+          class="hidden md:flex w-full md:w-auto font-extrabold"
+        >
+          <ul class="flex flex-col md:flex-row gap-2 md:items-center w-full">
+            <li>
+              <a class="block px-3 py-2 rounded-lg hover:bg-cream" href="../../index.html">Home</a>
+            </li>
+            <li>
+              <a class="block px-3 py-2 rounded-lg hover:bg-cream" href="about.html">About</a>
+            </li>
+            <li>
+              <a class="block px-3 py-2 rounded-lg hover:bg-cream" href="contact.html">Contact</a>
+            </li>
+            <li>
+              <a class="block px-3 py-2 rounded-lg hover:bg-cream" href="games.html" aria-current="page">Games</a>
+            </li>
+            <li>
+              <a class="block px-3 py-2 rounded-lg hover:bg-cream" href="deals.html" aria-current="page">Deals</a>
+            </li>
+            <li>
+              <a class="block px-3 py-2 rounded-lg hover:bg-cream" href="signin.html">Sign In</a>
+            </li>
+            <li>
+              <a
+                class="inline-block px-5 py-2 rounded-lg border-2 border-cocoa font-extrabold shadow-[3px_3px_0_#4A3226] hover:translate-y-0.5 hover:shadow-none transition text-center bg-peach"
+                href="signup.html"
+                >Sign Up</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- Header Navbar end -->
+
+    <main>
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="max-w-6xl mx-auto px-4 pt-6 text-sm font-bold">
+        <ol class="flex gap-1">
+          <li><a class="underline" href="../../index.html">Home</a> /</li>
+          <li aria-current="page">Games</li>
+        </ol>
+      </nav>
+
+      <!-- Page Intro -->
+      <section aria-labelledby="games-title" class="max-w-6xl mx-auto px-4 py-10">
+        <p
+          class="inline-block px-3 py-1 rounded-full border-2 border-cocoa text-xs font-extrabold bg-peach"
+        >
+          Your Collection
+        </p>
+        <h1 id="games-title" class="font-pixel text-cocoa text-2xl md:text-3xl mt-3">
+          My Games Library
+        </h1>
+        <p class="mt-4 max-w-2xl text-lg">
+          Add, edit and organize your favorite cozy games. Everything is saved in your browser.
+        </p>
+      </section>
+
+      <!-- CRUD Section -->
+      <section class="max-w-6xl mx-auto px-4 grid lg:grid-cols-3 gap-6">
+
+        <!-- FORM (left) -->
+        <form
+          id="game-form"
+          class="bg-white border-2 border-cocoa rounded-xl p-5 shadow-[4px_4px_0_#4A3226] space-y-4 h-fit"
+        >
+          <h2 id="form-title" class="font-extrabold text-xl">Add a game</h2>
+
+          <input type="hidden" id="game-id" />
+
+          <div>
+            <label for="title" class="font-bold text-sm">Title</label>
+            <input
+              id="title"
+              type="text"
+              required
+              class="w-full px-3 py-2 rounded-lg border-2 border-cocoa bg-cream focus:outline-none focus:ring-2 focus:ring-peach"
+              placeholder="Hollow Knight"
+            />
+          </div>
+
+          <div>
+            <label for="genre" class="font-bold text-sm">Genre</label>
+            <select
+              id="genre"
+              required
+              class="w-full px-3 py-2 rounded-lg border-2 border-cocoa bg-cream focus:outline-none focus:ring-2 focus:ring-peach"
+            >
+              <option value="Farming">Farming</option>
+              <option value="Management">Management</option>
+              <option value="Puzzle">Puzzle</option>
+              <option value="Adventure">Adventure</option>
+              <option value="Fiction">Fiction</option>
+              <option value="Action">Action</option>
+              <option value="Horror">Horror</option>
+              <option value="Psy-Horror">Psychological Horror</option>
+
+            </select>
+          </div>
+
+          <div>
+            <label for="price" class="font-bold text-sm">Price ($)</label>
+            <input
+              id="price"
+              type="number"
+              min="0"
+              step="0.01"
+              required
+              class="w-full px-3 py-2 rounded-lg border-2 border-cocoa bg-cream focus:outline-none focus:ring-2 focus:ring-peach"
+              placeholder="9.99"
+            />
+          </div>
+
+          <div>
+            <label for="description" class="font-bold text-sm">Description</label>
+            <textarea
+              id="description"
+              rows="3"
+              required
+              class="w-full px-3 py-2 rounded-lg border-2 border-cocoa bg-cream focus:outline-none focus:ring-2 focus:ring-peach"
+              placeholder="A haunting, hand-drawn adventure through a bug kingdom."
+            ></textarea>
+          </div>
+
+          <button
+            id="submit-btn"
+            type="submit"
+            class="block px-5 py-3 rounded-lg border-2 border-cocoa font-extrabold shadow-[3px_3px_0_#4A3226] hover:translate-y-0.5 hover:shadow-none transition text-center bg-peach w-full cursor-pointer"
+          >
+            Add game
+          </button>
+
+          <button
+            id="cancel-btn"
+            type="button"
+            class="hidden px-5 py-3 rounded-lg border-2 border-cocoa font-extrabold shadow-[3px_3px_0_#4A3226] hover:translate-y-0.5 hover:shadow-none transition text-center bg-white w-full cursor-pointer"
+          >
+            Cancel edit
+          </button>
+        </form>
+
+        <!-- LIST AREA (right) -->
+        <div class="lg:col-span-2 space-y-4">
+
+          <!-- Toolbar -->
+          <div
+            class="bg-white border-2 border-cocoa rounded-xl p-4 shadow-[4px_4px_0_#4A3226] flex flex-col sm:flex-row gap-3"
+          >
+            <div class="flex-1">
+              <label for="search-input" class="sr-only">Search games</label>
+              <input
+                id="search-input"
+                type="search"
+                class="w-full px-3 py-2 rounded-lg border-2 border-cocoa bg-cream focus:outline-none focus:ring-2 focus:ring-peach"
+                placeholder="Search by title or description..."
+              />
+            </div>
+            <div>
+              <label for="genre-filter" class="sr-only">Filter by genre</label>
+              <select
+                id="genre-filter"
+                class="w-full px-3 py-2 rounded-lg border-2 border-cocoa bg-cream focus:outline-none focus:ring-2 focus:ring-peach"
+              >
+                <option value="all">All genres</option>
+                <option value="Farming">Farming</option>
+                <option value="Management">Management</option>
+                <option value="Puzzle">Puzzle</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Fiction">Fiction</option>
+                <option value="Action">Action</option>
+                <option value="Horror">Horror</option>
+                <option value="Psy-Horror">Psychological Horror</option>
+
+              </select>
+            </div>
+          </div>
+
+          <!-- Cards get inserted here by JS (Step 4) -->
+          <div id="game-list" class="grid gap-4 sm:grid-cols-2"></div>
+
+          <!-- Empty message -->
+          <p
+            id="empty-msg"
+            class="hidden border-2 border-cocoa bg-sage rounded-xl p-4 font-bold"
+            role="status"
+          >
+            No games found.
+          </p>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer start -->
+    <footer class="bg-cocoa text-cream mt-16">
+      <div class="max-w-6xl mx-auto px-4 py-10 grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+        <section aria-labelledby="footer-brand">
+          <h2 id="footer-brand" class="font-pixel text-xs text-butter mb-3">Pixel Heaven</h2>
+          <p class="text-sm">
+            A cozy corner of the internet for indie game lovers. Grab a cocoa,
+            stay a while.
+          </p>
+        </section>
+
+        <nav aria-labelledby="footer-explore">
+          <h2 id="footer-explore" class="font-extrabold mb-2">Explore</h2>
+          <ul class="space-y-1 text-sm">
+            <li><a class="hover:text-peach" href="../../index.html">Home</a></li>
+            <li><a class="hover:text-peach" href="about.html">About</a></li>
+            <li><a class="hover:text-peach" href="contact.html">Contact</a></li>
+            <li><a class="hover:text-peach" href="games.html">Games</a></li>
+            <li><a class="hover:text-peach" href="deals.html" aria-current="page">Deals
+            </a></li>
+            <li><a class="hover:text-peach" href="signin.html">Sign In</a></li>
+            <li><a class="hover:text-peach" href="signup.html">Sign Up</a></li>
+          </ul>
+        </nav>
+
+        <section aria-labelledby="footer-contact">
+          <h2 id="footer-contact" class="font-extrabold mb-2">Say hi</h2>
+          <address class="text-sm not-italic">
+            <a class="hover:text-peach" href="mailto:hello@pixelheaven.example">hello@pixelheaven.example</a>
+          </address>
+          <ul class="flex gap-2 mt-3">
+            <li class="inline-block px-3 py-1 rounded-full border-2 border-cocoa text-xs font-extrabold bg-sage text-cocoa">Discord</li>
+            <li class="inline-block px-3 py-1 rounded-full border-2 border-cocoa text-xs font-extrabold bg-peach text-cocoa">Twitch</li>
+          </ul>
+        </section>
+      </div>
+      <p class="text-center text-xs py-4 border-t border-cream/20">
+        <small>&copy; 2026 Pixel Heaven. Made with love and pixels.</small>
+      </p>
+    </footer>
+    <!-- Footer end -->
+
+    <!-- Mobile menu toggle -->
+    <script>
+      const toggle = document.getElementById("menu-toggle");
+      const nav = document.getElementById("main-nav");
+      toggle.addEventListener("click", () => {
+        const open = toggle.getAttribute("aria-expanded") === "true";
+        toggle.setAttribute("aria-expanded", String(!open));
+        nav.classList.toggle("hidden", open);
+        nav.classList.toggle("flex", !open);
+      });
+    </script>
+
+    <!-- Games CRUD logic -->
+    <script src="../scripts/games.js"></script>
+  </body>
+</html>
