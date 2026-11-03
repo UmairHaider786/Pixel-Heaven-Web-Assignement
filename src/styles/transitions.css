@@ -1,0 +1,42 @@
+/* Smooth cross-page transitions (Chrome/Edge, Safari 18.2+) */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: fade-out 0.25s ease both;
+}
+::view-transition-new(root) {
+  animation: fade-in 0.35s ease both;
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+/* Keep the header steady while the content fades */
+header {
+  view-transition-name: site-header;
+}
+
+/* Fallback fade-in for browsers without support (e.g. Firefox) */
+@supports not (view-transition-name: none) {
+  body {
+    animation: page-fade-in 0.4s ease both;
+  }
+  @keyframes page-fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+  }
+}
+
+/* Respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root),
+  body {
+    animation: none;
+  }
+}

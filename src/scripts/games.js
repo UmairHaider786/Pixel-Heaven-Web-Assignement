@@ -3,33 +3,27 @@
 // The name our data is saved under inside the browser
 const STORAGE_KEY = "pixelHeavenGames";
 
-// Read the saved games from Local Storage and return them as an array
 const loadGames = () => {
   const saved = localStorage.getItem(STORAGE_KEY);
 
-  // First visit: nothing saved yet, so start with an empty array
   if (saved === null) {
     return [];
   }
 
-  // Local Storage only holds text, so turn the text back into an array
   return JSON.parse(saved);
 };
 
-// Turn the array into text and save it in Local Storage
 const saveGames = (games) => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(games));
 };
 
-// The main array of objects. Every game record lives in here.
 let games = loadGames();
 
 
 /* ---------- 2. GRAB THE HTML ELEMENTS ---------- */
 
 // Form fields
-const gameForm = document.getElementById("game-form");
-const gameIdInput = document.getElementById("game-id"); // hidden input, used for editing
+const gameForm = document.getElementById("game-form");// hidden input, used for editing
 const titleInput = document.getElementById("title");
 const genreInput = document.getElementById("genre");
 const priceInput = document.getElementById("price");
@@ -49,9 +43,8 @@ const gameList = document.getElementById("game-list");
 const emptyMsg = document.getElementById("empty-msg");
 
 
-/* ---------- 3. READ: SHOW GAMES ON THE PAGE ---------- */
 
-// Stops text typed by the user from being treated as HTML code
+// this is help us ignore any HTML tags that a user might try to sneak into the form fields
 const escapeHtml = (text) =>
   String(text)
     .replace(/&/g, "&amp;")
@@ -59,7 +52,8 @@ const escapeHtml = (text) =>
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
 
-// Draw a list of games as cards
+
+    
 const renderGames = (list) => {
   // Show the "No games found" message only when the list is empty
   emptyMsg.classList.toggle("hidden", list.length > 0);
@@ -87,14 +81,11 @@ const renderGames = (list) => {
 
 /* ---------- 4. SEARCH AND FILTER ---------- */
 
-// Read the search box and genre dropdown, then show only the matching games
 const applyFilters = () => {
   const term = searchInput.value.trim().toLowerCase();
   const genre = genreFilter.value;
 
-  // filter() keeps only the games where the function returns true
   const results = games.filter((game) => {
-    // "all" means every genre is allowed
     const matchesGenre = genre === "all" || game.genre === genre;
 
     // some() checks if AT LEAST ONE of these fields contains the search text
@@ -114,7 +105,6 @@ searchInput.addEventListener("input", applyFilters);
 genreFilter.addEventListener("change", applyFilters);
 
 
-/* ---------- 5. FORM HELPER ---------- */
 
 // Put the form back into normal "Add a game" mode
 const resetForm = () => {
